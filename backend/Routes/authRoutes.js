@@ -5,6 +5,8 @@ const { authMiddleware } = require("../middleware/authMiddleware");
 const { createFolder, deleteFolder } = require("../controllers/folderController");
 const { deleteFile } = require("../controllers/fileController");
 const { createproduct,getproduct, putProduct} = require("../controllers/productController");
+const {createOrder,getOrders,getOrderById,deleteOrder}= require("../controllers/orderController");
+
 router.post("/register", register);
 router.post("/login", login);
 router.post("/prod",authMiddleware, createproduct);
@@ -13,6 +15,8 @@ router.put("/prod",authMiddleware, putProduct);
 router.post("/createFolder", authMiddleware, createFolder);
 router.delete("/deleteFile/:id",authMiddleware,deleteFile)
 router.delete("/deleteFolder/:id",authMiddleware,deleteFolder)
+router.post("/order", authMiddleware, createOrder);
+router.get("/order",authMiddleware, getOrders);
 router.get("/test",(req,res)=>res.json("hii there"))
  console.log("jiioi")
 module.exports = router;
